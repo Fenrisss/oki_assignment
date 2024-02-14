@@ -1,0 +1,22 @@
+{
+  "name": "oki_assignment",
+  "version": "1.0.0",
+  "description": "Automated testing of editing the VAT data  ",
+  "scripts": {
+    "test": "./node_modules/.bin/mocha --config .mocharc_ui.json tests/ui/spec/*spec.js"
+
+  },
+  "author": "Fenrisss",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Fenrisss/oki_assignment/issues"
+  },
+  "homepage": "https://github.com/Fenrisss/oki_assignment#readme",
+  "dependencies": {
+    "chai": "^5.1.0",
+    "chai-http": "^4.4.0",
+    "dotenv": "^16.4.3",
+    "mocha": "^10.3.0",
+    "puppeteer": "^22.0.0"
+  }
+}

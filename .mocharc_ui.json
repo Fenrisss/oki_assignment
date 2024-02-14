@@ -1,0 +1,10 @@
+{
+  "extension": [
+    "js"
+  ],
+  "file": [
+    "tests/utils/bootstrap.js"
+  ],
+  "ui": "bdd",
+  "timeout": 1200000
+}
