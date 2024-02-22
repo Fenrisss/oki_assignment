@@ -1,6 +1,4 @@
-// const config = require('config');
-const result = require('dotenv').config();
-
+import 'dotenv/config';
 
 const env = process.env.PRODUCT
 const getProductURL = (env) => {
@@ -17,7 +15,7 @@ const VIDEO_RECORDING = process.env.VIDEO_RECORDING;
 const IS_MOBILE = process.env.IS_MOBILE;
 
 
-module.exports = {
+export {
     SHOP_URL,
     HEADLESS,
     KEEP_BROWSER_OPEN,

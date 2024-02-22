@@ -78,19 +78,6 @@ const ElementShouldHaveTextDiv = async (element, expectedText) => {
     return actual_text.should.have.string(expectedText);
 };
 
-const ElementAbsence = async (element, timeout = 2000) => {
-    await page.waitForTimeout(timeout);
-
-    if (element.startsWith('//')) {
-        const exists = await page.$x(element);
-
-        return exists.should.be.empty;
-    } else {
-        const exists = await page.$(element);
-
-        return should.equal(exists, null);
-    }
-};
 
 const UploadFile = async (element, file) => {
     await elements_handler(element, {hidden: true}).then(elementHandle => elementHandle.uploadFile(file));
@@ -127,7 +114,7 @@ const GetIframe = async (idOrUrl) => {
 
 
 
-module.exports = {
+export {
     elements_handler,
     ClickOnElement,
     SendKeysToElement,
@@ -139,7 +126,6 @@ module.exports = {
     ClearInputField,
     HoverOverElement,
     ElementShouldHaveTextDiv,
-    ElementAbsence,
     UploadFile,
     GetIframe
 }

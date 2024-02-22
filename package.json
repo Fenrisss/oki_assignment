@@ -1,10 +1,10 @@
 {
   "name": "oki_assignment",
   "version": "1.0.0",
+  "type": "module",
   "description": "Automated testing of editing the VAT data  ",
   "scripts": {
     "test": "./node_modules/.bin/mocha --config .mocharc_ui.json tests/ui/spec/*spec.js"
-
   },
   "author": "Fenrisss",
   "license": "ISC",

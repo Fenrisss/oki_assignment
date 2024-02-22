@@ -68,6 +68,6 @@ async function installMouseHelper(page) {
     });
 }
 
-module.exports = {
+export {
     installMouseHelper
 };

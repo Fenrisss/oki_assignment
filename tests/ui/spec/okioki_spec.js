@@ -1,14 +1,22 @@
-const okiokiMethods = require('../methods/okioki_methods');
+import {GoToOki, AuthorizeWithCredentials, GoToTheDoc, GetBearToken, SetInvoiceInitialState, EditExlVAT, ValidateCalculations} from '../methods/okioki_methods.js';
 
 
+describe('OkiOki test', () => {
 
-
-describe('okioki tests', () => {
-    it("okioki go to website", async () => {
-        await okiokiMethods.GoToOki();
-        await okiokiMethods.AuthorizeWithCredentials('sherov.almanbet@gmail.com', 'Test1234');
-        // await page.screenshot({path: './screenpic.jpeg'});
+    before(async function () {
+        await GoToOki();
+        await AuthorizeWithCredentials('vincent.depoortere+demo4testers@gmail.com', 'Demo4Testers');
     });
 
+    it("changes the Invoice VAT data", async () => {
+        await GoToTheDoc();
+        await EditExlVAT('1000');
+        await ValidateCalculations('€ 943,40');
+    });
+
+    after(async function () {
+        const user_token = await GetBearToken();
+        await SetInvoiceInitialState(user_token);
+    });
 
 });

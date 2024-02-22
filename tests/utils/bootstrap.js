@@ -1,39 +1,9 @@
+import puppeteer from "puppeteer/internal/puppeteer.js";
 import('chai/register-should.js');
-const puppeteer = require('puppeteer');
-const {installMouseHelper} = require('../utils/mouse_pointer');
-let {HEADLESS, KEEP_BROWSER_OPEN, IS_MOBILE} = require('../utils/env_config');
+import {installMouseHelper} from './mouse_pointer.js';
+import {KEEP_BROWSER_OPEN} from "./env_config.js";
 
 
-
-if (HEADLESS === 'false') {
-    HEADLESS = false;
-};
-
-if (IS_MOBILE === 'false') {
-    IS_MOBILE = false;
-};
-
-const isMobile = IS_MOBILE;
-
-const getOtps = (isMobile) => {
-    const currentDivesConfig = {
-        width: isMobile ? '400' : '1920' ,
-        height: isMobile ? '800' : '1080',
-    };
-    return {
-        headless: HEADLESS,
-        defaultViewport: null,
-        slowMo: 40,
-        args: [
-            '--disable-gpu', `--window-size=${currentDivesConfig.width},${currentDivesConfig.height}`, '--no-sandbox',
-            '--disable-setuid-sandbox', '--disable-infobars',
-            '--disable-save-password-bubble', '--disable-dev-shm-usage',
-            '--disable-web-security', '--disable-features=IsolateOrigins,site-per-process',
-            '--use-fake-device-for-media-stream', '--use-fake-ui-for-media-stream',
-            '--use-file-for-fake-video-capture=./tests/utils/data/128.mjpeg'
-        ]
-    };
-};
 
 const setLocalStorage = async (key, value) => {
     await page.evaluate((key, value) => {
@@ -98,7 +68,7 @@ before(async () => {
     global.SetPageView = PageViewPort;
     global.scrollUp = scrollUp;
     global.scrollDown = scrollDown;
-    global.browser = await puppeteer.launch(getOtps(isMobile));
+    global.browser = await puppeteer.launch({headless: false, defaultViewport: null, args:['--window-size=1920,1080'], slowMo: 30});
     // const context = browser.defaultBrowserContext();
     global.page = await browser.newPage();
 
