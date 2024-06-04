@@ -1,4 +1,5 @@
-const request_data = {"invoiceNumber":"",
+const request_data = {
+    "invoiceNumber":"",
     "paymentReference":"+++550/1162/63684+++",
     "currencyId":"3ccb2061-8285-4bca-8d1e-dd9f46d99bf9",
     "iban":"BE34320000273690",
